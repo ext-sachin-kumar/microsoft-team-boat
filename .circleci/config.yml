@@ -10,9 +10,9 @@ jobs:
         name: "Install dependencies"
         command: npm install 
   lint:
-    executors:
-      name: node-executor
+    executor: node-executor
     steps:
+      - checkout
       - run:
         name: Install dependencies
         command: npm install

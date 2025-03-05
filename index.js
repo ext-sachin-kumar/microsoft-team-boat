@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 morgan(':method :url :status :res[content-length] - :response-time ms')
 app.use(morgan('dev'));
 
-app.use((err, req, res) => {
+app.use((err, req, res, next) => {
   console.error(err.stack)
   res.status(500).send('Something broke!')
 })

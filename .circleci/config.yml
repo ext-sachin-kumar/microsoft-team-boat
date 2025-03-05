@@ -13,19 +13,19 @@ jobs:
     steps:
       - checkout
       - run:
-        name: "Install dependencies"
-        command: npm install 
+          name: "Install dependencies"
+          command: npm install 
 
   lint:
     executor: node-executor
     steps:
       - checkout
       - run:
-        name: Install dependencies
-        command: npm install
+          name: Install dependencies
+          command: npm install
       - run:
-        name: Lint
-        command: npm run lint
+          name: Lint
+          command: npm run lint
 
 
 workflows:

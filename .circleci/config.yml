@@ -1,10 +1,5 @@
 version: 2.1
 
-workflows:
-  test-deploy:
-    jobs:
-      - test
-
 jobs:
   test:
     docker:
@@ -12,8 +7,21 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install Dependencies
-          command: npm install
-      - run:
-          name: Run Tests
-          command: npm run test
+        name: "Install dependencies"
+        command: npm install 
+  lint:
+    - executors:
+        name: node-executor
+    - run:
+        name: Install dependencies
+        command: npm install
+    - run:
+        name: Lint
+        command: npm run lint
+
+
+workflows:
+  ci-workflow:
+    jobs:
+      - test
+      - lint
